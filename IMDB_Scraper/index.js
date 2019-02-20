@@ -1,5 +1,6 @@
 const request = require('request-promise');
 const cheerio = require('cheerio');
+const path = require('path');
 
 const URL = 'https://www.imdb.com/title/tt0468569/';
 
@@ -11,7 +12,7 @@ const URL = 'https://www.imdb.com/title/tt0468569/';
 
   let title = $('div[class="title_wrapper"] > h1').text();
   let rating = $('span[itemprop="ratingValue"]').text();
-  console.log(title);
-  console.log(rating);
+  
+  console.log(title, rating);
 
 })()
