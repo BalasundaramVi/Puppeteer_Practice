@@ -1,37 +1,21 @@
 const puppeteer = require('puppeteer');
 
 (async () => {
-  /* 1. Creating a PDF from the website */
-  const browser = await puppeteer.launch({ headless: true });
-  const page = await browser.newPage();
-  await page.goto('https://learnscraping.com');
-  await page.pdf({
-    path: './page.pdf',
-    format: 'A4',
-  });
-  await browser.close();
-
-  /* 2. Getting the URL or the Title of the current page */
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
-  await page.goto('https://learnscraping.com');
+  
+  await page.goto('https://instagram.com/');
+  await page.waitFor('a[href="/accounts/login/?source=auth_switcher"]');
+  await page.click('a[href="/accounts/login/?source=auth_switcher"]');
+  await page.waitFor(500); // use this when inputs not working for any reason
 
-  let title = await page.title();
-  console.log(`Title of the page is ${title}`);
+  //use copy-selector when you can't find a direct id for element
+  await page.waitFor('input[name="username"]');
+  await page.type('input[name="username"]', 'abc123', {delay: 100});
 
-  let url = await page.url();
-  console.log(`Url of the page is ${url}`);
+  await page.waitFor('input[name="password"]');
+  await page.type('input[name="password"]', 'xxxxxx', {delay: 100});
 
-  await browser.close();
-
-  /* 3. Emulate a phone */
-  const devices = require('puppeteer/DeviceDescriptors');
-
-  const browser = await puppeteer.launch({ headless: false });
-  const page = await browser.newPage();
-
-  await page.emulate(devices['iPhone X']);
-  await page.goto('https://learnscraping.com/');
-
-  await browser.close();
+  debugger;
+  // await browser.close();
 })();
