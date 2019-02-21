@@ -1,0 +1,17 @@
+{
+  "name": "the-puppeteer-method",
+  "version": "1.0.0",
+  "description": "Using Puppeteer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Puppeteer"
+  ],
+  "author": "Vignesh Balasundaram",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^1.12.2"
+  }
+}
