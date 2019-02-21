@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import './styles.css';
+
+const q = require('./scraper');
+
 
 class App extends React.Component {
   constructor(props) {
@@ -25,9 +27,8 @@ class App extends React.Component {
 
   async queryData(query, querySize) {
     this.setState({ loading: true });
-    console.log(query, querySize);
 
-
+    q.dataQuery(query, querySize);
 
     this.setState({ loading: false })
   }
