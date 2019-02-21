@@ -1,6 +1,13 @@
 const puppeteer = require('puppeteer');
+const { USERNAME, PASSWORD } = require('./auth.js');
+const twitter = require('./twitter.js');
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: false });
-  const page = await browser.newPage();
-})
+
+  await twitter.initialize();
+  await twitter.login(USERNAME, PASSWORD);
+
+  debugger;
+
+  // await twitter.end();
+})();
